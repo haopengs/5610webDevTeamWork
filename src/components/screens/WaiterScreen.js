@@ -1,0 +1,19 @@
+import React from 'react'
+import { useSelector } from 'react-redux';
+
+export default function AdminScreen() {
+  const { currentUser } = useSelector((state) => state.users);
+
+  return (
+    <div>
+          <h1>Waiter Dashboard</h1>
+          <div>
+              {currentUser && (
+                <div>
+                    <h2>Welcome {currentUser.firstName} {currentUser.lastName}</h2>
+                </div>
+              )}
+          </div>
+    </div>
+  )
+}
