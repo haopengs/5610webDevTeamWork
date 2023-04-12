@@ -18,12 +18,9 @@ const store = configureStore({
 function RestaurantApp(){
   return (
     <Provider store={store}>
-    <div className="row mt-2">
-      <div className="col-2 col-md-2 col-lg-1 col-xl-2">
-        <NavigationSidebar active="explore"/>
+      <div>
+        <NavigationSidebar/>
       </div>
-      <div className="col-10 col-md-10 col-lg-7 col-xl-6"
-           style={{"position": "relative"}}>
         <Routes>
           <Route path="/home"    element={<HomePage/>}/>
           <Route path="/profile" element={<ProfilePage/>}/>
@@ -31,8 +28,6 @@ function RestaurantApp(){
           <Route path="*"        element={<HomePage/>}/>
           <Route path="/login"  element={<LoginPage/>}/>
         </Routes>
-      </div>
-    </div>
     </Provider>
 );
 }
