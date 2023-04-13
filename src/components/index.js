@@ -12,6 +12,8 @@ import UserScreen from "./screens/UserScreen"
 import DishesScreen from "./admin/Dishes"
 import Login from "./screens/Login"
 import SignUp from "./screens/SignUp";
+import CookScreen from "./screens/CookScreen";
+import WaiterScreen from "./screens/WaiterScreen";
 
 function RestaurantApp(){
   return (
@@ -27,6 +29,8 @@ function RestaurantApp(){
             <Route path="/admin" element={<AdminScreen/>} />
             <Route path="/user" element={<UserScreen/>} />
             <Route path="/dishes" element={<DishesScreen/>} />
+            <Route path="/cook" element={<CookScreen/>} />
+            <Route path="/waiter" element={<WaiterScreen/>} />
         </Routes>
     </Provider>
 );

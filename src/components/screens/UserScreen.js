@@ -1,5 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
+import AppointmentCalendar from '../data/calendar.js';
 
 export default function AdminScreen() {
   const { currentUser } = useSelector((state) => state.users);
@@ -14,6 +15,7 @@ export default function AdminScreen() {
                 </div>
               )}
           </div>
+          <AppointmentCalendar/>
     </div>
   )
 }
