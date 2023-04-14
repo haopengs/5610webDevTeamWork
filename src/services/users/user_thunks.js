@@ -7,12 +7,25 @@ export const findAllUsersThunk = createAsyncThunk(
     return users;
 });
 
+
+export const findUserByIdThunk = createAsyncThunk(
+  "users/findById",
+  async (id) => {
+    const user = await userService.findUserById(id);
+    return user;
+  }
+);
+
 export const updateUserThunk = createAsyncThunk(
     "users/update",
-    async (user) => {
-        await userService.updateUser(user);
-        return user;
-    }
+  async (user) => {
+    console.log(user)
+    // evertthing is good except the following
+    // we can wait backend finsh to figure out
+
+    // await userService.updateUser(user)
+    return user;
+  }
 );
 
 export const deleteUserThunk = createAsyncThunk(
@@ -28,6 +41,27 @@ export const createUserThunk = createAsyncThunk(
     return user;
   }
 );
+
+export const createOrderThunk = createAsyncThunk(
+  "users/createOrder",
+    async (order) => {
+      await userService.createOrder(order);
+    return order;
+  }
+);
+
+export const findAllOrdersThunk = createAsyncThunk(
+    "users/findAllOrders", async () => {
+    const orders = await userService.findAllOrders();
+    return orders;
+});
+
+export const findAllUsersByDishIdThunk = createAsyncThunk(
+    "users/dishes", async (id) => {
+    const users = await userService.findAllUsersByDishId(id);
+    return users;
+});
+
 export const loginThunk = createAsyncThunk(
     "users/login", async (user) => {
     const response = await userService.login(user);

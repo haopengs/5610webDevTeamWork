@@ -14,7 +14,7 @@ export default function Login() {
     
     const login = async() => {
         const check = await dispatch(loginThunk({ username, password }))
-        console.log(check)
+        // console.log(check)
         if (check.error == null) {
             navigate('/profile')
 

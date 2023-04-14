@@ -12,6 +12,12 @@ import UserScreen from "./screens/UserScreen"
 import DishesScreen from "./admin/Dishes"
 import Login from "./screens/Login"
 import SignUp from "./screens/SignUp";
+import MakeAppointments from "./user/MakeAppointments";
+import OrderDishes from "./user/OrderDishes";
+import OrderHistory from "./user/OrderHistory"
+import EditProfile from "./screens/EditProfile";
+import DishDetial from "./Detail/DishDetial";
+import UserDetail from "./Detail/UserDetail";
 
 function RestaurantApp(){
   return (
@@ -20,13 +26,20 @@ function RestaurantApp(){
         <Routes>
             <Route path="/home"    element={<HomePage/>}/>
             <Route path="/profile" element={<Profile/>}/>
+            <Route path="/profile/:profileId" element={<UserDetail/>}/>
             <Route path="/search"  element={<SearchPage/>}/>
             <Route path="*"        element={<HomePage/>}/>
             <Route path="/login"  element={<Login/>}/>
             <Route path="/register" element={<SignUp/>} />
             <Route path="/admin" element={<AdminScreen/>} />
             <Route path="/user" element={<UserScreen/>} />
+            <Route path="/user/makeAppointment" element={<MakeAppointments/>} />
+            <Route path="/user/orderDishes" element={<OrderDishes/>} />
+            <Route path="/user/orderHistory" element={<OrderHistory/>} />
+            <Route path="/user/editProfile" element={<EditProfile/>} />
+            <Route path="/user" element={<UserScreen/>} />
             <Route path="/dishes" element={<DishesScreen/>} />
+            <Route path="/dish/:dishId" element={<DishDetial/>} />
         </Routes>
     </Provider>
 );
