@@ -1,11 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { findAllUsersThunk, updateUserThunk, deleteUserThunk, createUserThunk, loginThunk} from "../services/users/user_thunks";
+import { findAllUsersThunk, findUserByIdThunk, updateUserThunk, deleteUserThunk, createUserThunk, findAllUsersByDishIdThunk, loginThunk} from "../services/users/user_thunks";
 
 const initialState = {
     users: [],
+    usersByDish:[],
     loading: false,
     error: null,
     currentUser: null,
+    oneUser: null,
 };
 
 const usersSlice = createSlice({
@@ -13,8 +15,16 @@ const usersSlice = createSlice({
     initialState,
     reducers: {},
     extraReducers: {
+        [updateUserThunk.pending]: (state, action) => {
+            console.log("pending")
+        },
+        [updateUserThunk.rejected]: (state, action) => {
+            console.log("reject")
+        },
         [updateUserThunk.fulfilled]: (state, action) => {
-            state.users = state.users.map((user) =>user.id === action.payload.id ? action.payload : user);
+            // state.users = state.users.map((user) => user.id === action.payload.id ? action.payload : user);
+            state.currentUser = action.payload;
+            
         },
         [createUserThunk.fulfilled]: (state, action) => {
             state.users.push(action.payload);
@@ -34,11 +44,27 @@ const usersSlice = createSlice({
             state.loading = false;
             state.error = action.error.message;
         },
+        [findAllUsersByDishIdThunk.pending]: (state, action) => {
+            state.loading = true;
+            state.usersByDish = [];
+        },
+        [findUserByIdThunk.pending]: (state, action) => {
+            state.loading = true;
+        },
+        [findUserByIdThunk.fulfilled]: (state, action) => {
+            state.loading = false;
+            state.oneUser = action.payload;
+        },
+        [findAllUsersByDishIdThunk.fulfilled]: (state, action) => {
+            state.loading = false;
+            state.usersByDish = action.payload;
+        },
         [loginThunk.pending]: (state, action) => {
             state.loading = true;
             state.error = null;
         },
         [loginThunk.fulfilled]: (state, action) => {
+            // state.users.push(action.payload);
             state.currentUser = action.payload;
         },
         [loginThunk.rejected]: (state, action) => {

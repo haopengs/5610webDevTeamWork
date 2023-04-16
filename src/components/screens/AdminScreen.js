@@ -61,7 +61,6 @@ export default function AdminScreen() {
                         <div className='col-3'>{adminLinks()}</div>
                         <div className='col-9'>{adminInfo()}</div>
                     </div>
-                      
                 </div>
               )}
           </div>

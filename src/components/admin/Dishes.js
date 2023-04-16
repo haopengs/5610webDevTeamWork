@@ -9,30 +9,48 @@ export default function Dishes() {
     useEffect(() => {
         dispatch(findAllDishsThunk())
     },[])
+
+    const handleDishInfoClick = (dishId) => {
+        console.log(`Displaying information for dish with id: ${dishId}`)
+    }
+
+    const handleDeleteDishClick = (dishId) => {
+        dispatch(deleteDishThunk(dishId))
+    }
+
+    const handleUpdateDishClick = (dish) => {
+        const updatedDish = { ...dish, price: dish.price + 1000 }
+        dispatch(updateDishThunk(updatedDish))
+    }
+
     return (
         <div>
-            <h1>Dishes</h1> 
-            <ul className='list-group'>
-                {dishes && (
-                    dishes.map((dish) => {
-                        return (
-                            <li className='list-group-item'>
-                                {dish.name}
-                                <button className="btn btn-warning float-end">
-                                    {dish.editing ? "Save" : "Edit"}
-                                </button>
-                                <button className="btn btn-warning float-end">
-                                    Delete
-                                </button>
-                            </li>
-                            
-                        )
-                    }
-
-                    )   
-                )}
-            </ul>
-            
+            <h2>Dishes</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Category</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {dishes.map((dish) => (
+                        <tr key={dish.id}>
+                            <td>{dish.id}</td>
+                            <td>{dish.name}</td>
+                            <td>{dish.price}</td>
+                            <td>{dish.category}</td>
+                            <td>
+                                <button onClick={() => handleDishInfoClick(dish.id)}>Check Dish Info</button>
+                                <button onClick={() => handleDeleteDishClick(dish.id)}>Delete</button>
+                                <button onClick={() => handleUpdateDishClick(dish)}>Update</button>
+                            </td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
         </div>
     )
 }
