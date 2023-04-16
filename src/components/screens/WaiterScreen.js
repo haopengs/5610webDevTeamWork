@@ -1,6 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import BookingSystem from '../admin/Appointment';
 
 
 export default function WaiterScreen() {
@@ -12,7 +13,7 @@ export default function WaiterScreen() {
           <div>
               {currentUser && (
                 <div>
-                    <h2>Welcome {currentUser.firstName} {currentUser.lastName}</h2>
+                    <h2>Welcome Waiter {currentUser.firstName} {currentUser.lastName}</h2>
                     <div className='row'>
                         <div className='col-3'>
                             <h4>My Information</h4>
@@ -26,11 +27,7 @@ export default function WaiterScreen() {
                 </div>
                 <div className='col-9'>
                     <h4> Appointments</h4>
-                    <button>
-                        <Link to="/Appointment" className='btn btn-primary'>
-                            Go to Appointments Page
-                        </Link>
-                    </button>
+                    <BookingSystem/>
                 </div>
             </div>
         </div>

@@ -16,17 +16,22 @@ export default function AdminScreen() {
                         </Link>
                     </li>
                     <li className='list-group-item'>
-                        <Link className='nav-link' to={"/dishes"}>
+                        <Link className='nav-link' to={"/appointment"}>
                             Manage Appointments
                         </Link>
                     </li>
                     <li className='list-group-item'>
-                        <Link className='nav-link' to={"/dishes"}>
-                            Manage Employees
+                        <Link className='nav-link' to={"/cooks"}>
+                            Manage Cooks
                         </Link>
                     </li>
                     <li className='list-group-item'>
-                        <Link className='nav-link' to={"/dishes"}>
+                        <Link className='nav-link' to={"/waiters"}>
+                            Manage Waiters
+                        </Link>
+                    </li>
+                    <li className='list-group-item'>
+                        <Link className='nav-link' to={"/users"}>
                             Manage Users
                         </Link>
                     </li>

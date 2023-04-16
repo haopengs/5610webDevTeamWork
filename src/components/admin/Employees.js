@@ -1,5 +1,6 @@
-import React, { useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import React from 'react'
+import {useSelector, useDispatch} from 'react-redux'
+import {useEffect} from 'react'
 import { findAllEmployeesThunk, deleteEmployeeThunk, updateEmployeeThunk } from '../../services/employees/employees_thunks'
 
 export default function Employees() {

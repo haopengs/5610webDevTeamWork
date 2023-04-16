@@ -8,7 +8,6 @@ import SearchPage from "./Search";
 import store from "../reducers/store";
 import Profile from "./screens/Profile";
 import AdminScreen from "./screens/AdminScreen"
-import UserScreen from "./screens/UserScreen"
 import DishesScreen from "./admin/Dishes"
 import Login from "./screens/Login"
 import SignUp from "./screens/SignUp";
@@ -19,7 +18,11 @@ import OrderDishes from "./user/OrderDishes";
 import OrderHistory from "./user/OrderHistory"
 import EditProfile from "./screens/EditProfile";
 import DishDetial from "./Detail/DishDetial";
-import UserDetail from "./Detail/UserDetail";
+import BookingSystem from "./admin/Appointment";
+import Employees from "./admin/Employees";
+import Users from "./admin/Users";
+import Cooks from "./admin/Cooks";
+import Waiters from "./admin/Waiters.js";
 
 
 function RestaurantApp(){
@@ -34,16 +37,17 @@ function RestaurantApp(){
             <Route path="/login"  element={<Login/>}/>
             <Route path="/register" element={<SignUp/>} />
             <Route path="/admin" element={<AdminScreen/>} />
-            <Route path="/user" element={<UserScreen/>} />
             <Route path="/dishes" element={<DishesScreen/>} />
+            <Route path="/appointment" element={<BookingSystem/>} />
+            <Route path="/employee" element={<Employees/>} />
+            <Route path="/users" element={<Users/>} />
             <Route path="/cook" element={<CookScreen/>} />
-            <Route path="/waiter" element={<WaiterScreen/>} />
+            <Route path="/cooks" element={<Cooks/>} />
+            <Route path="/waiters" element={<Waiters/>} />
             <Route path="/user/makeAppointment" element={<MakeAppointments/>} />
             <Route path="/user/orderDishes" element={<OrderDishes/>} />
             <Route path="/user/orderHistory" element={<OrderHistory/>} />
             <Route path="/user/editProfile" element={<EditProfile/>} />
-            <Route path="/user" element={<UserScreen/>} />
-            <Route path="/dishes" element={<DishesScreen/>} />
             <Route path="/dish/:dishId" element={<DishDetial/>} />
         </Routes>
     </Provider>
