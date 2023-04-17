@@ -16,10 +16,12 @@ export default function OrderDishes() {
   }, [])
 
   return (
-    <div>
-      <div >
-        <h1>Orders History</h1> 
-        <Link to={"/user"} className=''>Back</Link>
+    <div className='p-5'>
+      <div className=''>
+        <h2>
+          Orders History
+          <Link to={"/user"} className='col-1 rounded-pill btn border float-end'><b>Back</b></Link>
+        </h2> 
       </div>
       <ul className='list-group'>
           {curOrders && (

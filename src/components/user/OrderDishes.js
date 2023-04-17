@@ -37,12 +37,14 @@ export default function OrderDishes() {
   }, [order])
 
   return (
-    <div>
-      <div >
-        <h1>Dishes</h1> 
-        <Link to={"/user"} className=''>Back</Link>
+    <div className='p-5'>
+      <div className=''>
+        <h2>
+          Dishes
+          <Link to={"/user"} className='col-1 rounded-pill btn border float-end'><b>Back</b></Link>
+        </h2> 
       </div>
-      <ul className='list-group'>
+      <ul className='list-group mt-2'>
           {dishes && (
               dishes.map((dish) => {
                   return (
