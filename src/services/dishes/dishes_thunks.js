@@ -15,6 +15,14 @@ export const findDishByIdThunk = createAsyncThunk(
   }
 );
 
+// export const findDishByKeyWordThunk = createAsyncThunk(
+//   "dishs/findByKeyWord",
+//   async (keyWord) => {
+//     const dishes = await dishService.findDishByKeyWordThunk(keyWord);
+//     return dishes;
+//   }
+// );
+
 export const updateDishThunk = createAsyncThunk(
     "dishs/update",
     async (dish) => {

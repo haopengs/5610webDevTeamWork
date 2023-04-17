@@ -34,6 +34,18 @@ const dishesSlice = createSlice({
             state.loading = false;
             state.error = action.error.message;
         },
+        // [findDishByKeyWordThunk.pending]: (state, action) => {
+        //     state.loading = true;
+        //     state.dishes = [];
+        // },
+        // [findDishByKeyWordThunk.fulfilled]: (state, action) => {
+        //     state.loading = false;
+        //     state.dishes = action.payload;
+        // },
+        // [findDishByKeyWordThunk.rejected]: (state, action) => {
+        //     state.loading = false;
+        //     state.error = action.error.message;
+        // },
         [findDishByIdThunk.pending]: (state, action) => {
             state.loading = true;
         },

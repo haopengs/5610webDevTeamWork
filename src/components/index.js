@@ -28,6 +28,7 @@ function RestaurantApp(){
             <Route path="/profile" element={<Profile/>}/>
             <Route path="/profile/:profileId" element={<UserDetail/>}/>
             <Route path="/search"  element={<SearchPage/>}/>
+            <Route path="/search/:searchItem"  element={<SearchPage/>}/>
             <Route path="*"        element={<HomePage/>}/>
             <Route path="/login"  element={<Login/>}/>
             <Route path="/register" element={<SignUp/>} />
