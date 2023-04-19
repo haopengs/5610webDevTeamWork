@@ -15,8 +15,7 @@ export default function Waiters() {
     , []);
 
     const handleWaiterClick = (waiterId) => {
-        navigate(`/waiters/${waiterId}`);
-        // console.log(`Displaying information for waiter with id: ${waiterId}`);
+        navigate(`/profile/${waiterId}`);
     }
 
     const handleDeleteWaiterClick = (waiterId) => {

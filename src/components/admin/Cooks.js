@@ -15,7 +15,7 @@ export default function Cooks() {
     , []);
 
     const handleCookClick = (cookId) => {
-        navigate(`/cookScreen/${cookId}`);
+        navigate(`/profile/${cookId}`);
         // console.log(`Displaying information for cook with id: ${cookId}`);
     }
 

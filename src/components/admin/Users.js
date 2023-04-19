@@ -15,10 +15,7 @@ export default function Users() {
   },[])
 
   const handleUserClick = (userId) => {
-    navigate(`/userScreen/${userId}`)
-    // navigate(`/userScreen/${userId}`)
-
-    // console.log(`Displaying information for user with id: ${userId}`)
+    navigate(`/profile/${userId}`);
   }
 
   const handleDeleteUserClick = (userId) => {

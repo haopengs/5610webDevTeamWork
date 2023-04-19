@@ -46,7 +46,6 @@ function RestaurantApp(){
             <Route path="/user/editProfile" element={<EditProfile/>} />
             <Route path="/user" element={<UserScreen/>} />
             <Route path="/dishes" element={<DishesScreen/>} />
-            <Route path="/dishes" element={<DishesScreen/>} />
             <Route path="/appointment" element={<BookingSystem/>} />
             <Route path="/employee" element={<Employees/>} />
             <Route path="/users" element={<Users/>} />
