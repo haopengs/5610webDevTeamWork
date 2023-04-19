@@ -31,6 +31,7 @@ export const findOrdersByUserId = (id) => {
   return axios.get(`${USERS_API_URL}/Orders/${id}`).then((response) => response.data);
 };
 
+//not find this method was used
 export const findAllOrders = async () => {
   const response = await axios.get(`${USERS_API_URL}/findAllOrders`);
   return response.data;

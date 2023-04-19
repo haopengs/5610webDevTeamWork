@@ -20,64 +20,64 @@ export default function SignUp() {
     }
 
     return (
-        <div>
-        <h1>SignUp</h1>
-        <div className="mt-4 ">
-            <label>First Name</label>
-            <input
-            type="text" className="form-control" value={firstName}
-            onChange={(e) => {setFirstName(e.target.value);}}
-            />
-        </div>
-        <div className="mt-4">
-            <label>Last Name</label>
-            <input
-            type="text" className="form-control" value={lastName}
-            onChange={(e) => {setLastName(e.target.value);}}
-            />
-        </div>
-        <div className="mt-4 ">
-            <label>Username</label>
-            <input
-            type="text" className="form-control" value={username}
-            onChange={(e) => {setUsername(e.target.value);}}
-            />
-        </div>
-        <div className="mt-4 ">
-            <label>Password</label>
-            <input type="password" className="form-control" value={password}
-            onChange={(e) => {setPassword(e.target.value);}}
-            />
-        </div>
-        <div className="mt-4 ">
-            <label>Birthday</label>
-            <input type="date" className="form-control" 
-            onChange={(e) => {setBirthday(e.target.value);}}
-            />
-        </div>
-        <div className="mt-4 ">
-            <label>Phone Number</label>
-            <input type="text" className="form-control" 
-            onChange={(e) => {setPhone(e.target.value);}}
-            />
-        </div>
-        <div className="mt-4 ">
-            <label>Email</label>
-            <input type="email" className="form-control" 
-            onChange={(e) => {setEmail(e.target.value);}}
-            />
-        </div>
-        <div className='mt-4'>
-            Role
-        </div>
-            <div className="form-group">
-            <input type="radio" className=''  name="role" onChange={() => {setRole("cook")} }/> User
-            <input type="radio" className='ms-5'  name="role" onChange={() => {setRole("cook")} }/> Cook
-            <input type="radio" className='ms-5' name="role" onChange={() => {setRole("cook")} }/> Waiter
-        </div>
-        
-        <button onClick={signUp} className="btn btn-primary mt-4 ">SignUp</button>
-        <button onClick={() => navigate('/login')} className="btn btn-primary mt-4 ms-4">Login</button>
+        <div className='p-5'>
+            <h1>SignUp</h1>
+            <div className="mt-4 ">
+                <label>First Name</label>
+                <input
+                type="text" className="form-control" value={firstName}
+                onChange={(e) => {setFirstName(e.target.value);}}
+                />
+            </div>
+            <div className="mt-4">
+                <label>Last Name</label>
+                <input
+                type="text" className="form-control" value={lastName}
+                onChange={(e) => {setLastName(e.target.value);}}
+                />
+            </div>
+            <div className="mt-4 ">
+                <label>Username</label>
+                <input
+                type="text" className="form-control" value={username}
+                onChange={(e) => {setUsername(e.target.value);}}
+                />
+            </div>
+            <div className="mt-4 ">
+                <label>Password</label>
+                <input type="password" className="form-control" value={password}
+                onChange={(e) => {setPassword(e.target.value);}}
+                />
+            </div>
+            <div className="mt-4 ">
+                <label>Birthday</label>
+                <input type="date" className="form-control" 
+                onChange={(e) => {setBirthday(e.target.value);}}
+                />
+            </div>
+            <div className="mt-4 ">
+                <label>Phone Number</label>
+                <input type="text" className="form-control" 
+                onChange={(e) => {setPhone(e.target.value);}}
+                />
+            </div>
+            <div className="mt-4 ">
+                <label>Email</label>
+                <input type="email" className="form-control" 
+                onChange={(e) => {setEmail(e.target.value);}}
+                />
+            </div>
+            <div className='mt-4'>
+                Role
+            </div>
+                <div className="form-group">
+                <input type="radio" className=''  name="role" onChange={() => {setRole("cook")} }/> User
+                <input type="radio" className='ms-5'  name="role" onChange={() => {setRole("cook")} }/> Cook
+                <input type="radio" className='ms-5' name="role" onChange={() => {setRole("cook")} }/> Waiter
+            </div>
+            
+            <button onClick={signUp} className="btn btn-warning mt-4 ">SignUp</button>
+            <button onClick={() => navigate('/login')} className="btn btn-warning mt-4 ms-4">Login</button>
 
         </div>
     )
