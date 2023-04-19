@@ -24,13 +24,13 @@ class HomePage extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="container">
         <h1>5610 Restaurant</h1>
         <h2>New Dishes</h2>
         <ul>
           {this.state.dishes.map(dish => (
             <li key={dish.name}>
-              {dish.name} - {dish.price}
+              <span className="dish-name">{dish.name}</span> - <span className="dish-price">{dish.price}</span>
             </li>
           ))}
         </ul>
@@ -57,5 +57,3 @@ class HomePage extends React.Component {
 }
 
 export default HomePage;
-
-  
