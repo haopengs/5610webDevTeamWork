@@ -28,24 +28,28 @@ export default function Login() {
         }
     }
     return (
-        <div>
-        <h1>Login</h1>
-        <div className="form-group">
-            <label>Username</label>
-            <input
-            type="text" className="form-control" value={username}
-            onChange={(e) => {setUsername(e.target.value);}}
-            />
-        </div>
-        <div className="form-group">
-            <label>Password</label>
-            <input type="password" className="form-control" value={password}
-            onChange={(e) => {setPassword(e.target.value);}}
-            />
-        </div>
-        <button onClick={login} className="btn btn-primary mt-4">Login</button>
-        <button onClick={() => navigate('/register')} className="btn btn-primary mt-4 ms-4">SignUp</button>
-
+        <div className='container'>
+            <div className='row'>
+                <div className='col-6 mx-auto mt-5'>
+                    <div className="form-group">
+                        <label>Username</label>
+                        <input
+                        type="text" className="form-control" value={username}
+                        onChange={(e) => {setUsername(e.target.value);}}
+                        />
+                    </div>
+                    <div className="form-group mt-4">
+                        <label>Password</label>
+                        <input type="password" className="form-control" value={password}
+                        onChange={(e) => {setPassword(e.target.value);}}
+                        />
+                    </div>
+                    <button onClick={login} className="btn btn-warning mt-4">Login</button>
+                    <button onClick={() => navigate('/register')} className="btn btn-warning mt-4 float-end">SignUp</button>
+                </div>
+               
+            </div>
+            
         </div>
     )
 }

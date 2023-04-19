@@ -1,12 +1,19 @@
+import axios from "axios";
 import * as userService from "./user_service";
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import {
+  fetchUserByIdRequest,
+  fetchUserByIdSuccess,
+  fetchUserByIdFailure,
+} from './user_actions';
 
 export const findAllUsersThunk = createAsyncThunk(
-    "users/findAll", async () => {
+  "users/findAll", 
+  async () => {
     const users = await userService.findAllUsers();
     return users;
-});
-
+  }
+);
 
 export const findUserByIdThunk = createAsyncThunk(
   "users/findById",
@@ -15,6 +22,7 @@ export const findUserByIdThunk = createAsyncThunk(
     return user;
   }
 );
+
 
 export const updateUserThunk = createAsyncThunk(
     "users/update",
@@ -29,10 +37,12 @@ export const updateUserThunk = createAsyncThunk(
 );
 
 export const deleteUserThunk = createAsyncThunk(
-    "users/delete", async (id) => {
+  "users/delete", 
+  async (id) => {
     await userService.deleteUser(id);
     return id;
-});
+  }
+);
 
 export const createUserThunk = createAsyncThunk(
   "users/create",
@@ -63,7 +73,23 @@ export const findAllUsersByDishIdThunk = createAsyncThunk(
 });
 
 export const loginThunk = createAsyncThunk(
-    "users/login", async (user) => {
+  "users/login", 
+  async (user) => {
     const response = await userService.login(user);
     return response.data;
-});
+  }
+);
+
+
+export const fetchUserById = (userId) => {
+  return async (dispatch) => {
+    dispatch(fetchUserByIdRequest());
+
+    try {
+      const response = await axios.get(`/api/users/${userId}`);
+      dispatch(fetchUserByIdSuccess(response.data));
+    } catch (error) {
+      dispatch(fetchUserByIdFailure(error.message));
+    }
+  };
+};

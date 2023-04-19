@@ -10,6 +10,11 @@ export const findDishById = (id) => {
   return axios.get(`${DISHES_API_URL}/${id}`).then((response) => response.data);
 };
 
+export const findDishesByKeyWord = (keyWord) => {
+  return axios.get(`${DISHES_API_URL}/search/${keyWord}`).then((response) => response.data);
+};
+
+
 export const updateDish = (newDish) => {
   return axios.put(`${DISHES_API_URL}/${newDish.id}`, newDish);
 };

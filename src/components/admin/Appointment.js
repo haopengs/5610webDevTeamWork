@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { makeAppointmentThunk } from '../../services/appointments/appointments_thunks';
 
 const initialBookings = [
   { id: 1, name: 'John Doe', table: 1, time: '7:00 PM' },
@@ -41,7 +42,7 @@ function BookingSystem() {
     <div>
       <h1>Restaurant Booking System</h1>
       <BookingForm
-        onSubmit={editing ? updateBooking : addBooking}
+        onSubmit={editing ? updateBooking : makeAppointmentThunk}
         clearForm={clearForm}
         booking={currentBooking}
         editing={editing}

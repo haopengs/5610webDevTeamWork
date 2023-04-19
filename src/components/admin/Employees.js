@@ -1,17 +1,20 @@
-import React, { useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import React from 'react'
+import {useSelector, useDispatch} from 'react-redux'
+import {useEffect} from 'react'
 import { findAllEmployeesThunk, deleteEmployeeThunk, updateEmployeeThunk } from '../../services/employees/employees_thunks'
+import {useNavigate} from 'react-router-dom'
 
 export default function Employees() {
   const {employees} = useSelector((state) => state.employees)
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   useEffect(() => {
     dispatch(findAllEmployeesThunk())
   },[])
 
   const handleEmployeeInfoClick = (employeeId) => {
-    console.log(`Displaying information for employee with id: ${employeeId}`)
+    navigate(`/profile/${employeeId}`);
   }
 
   const handleDeleteEmployeeClick = (employeeId) => {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import DishesList from './EditDishes';
 
 export default function CookScreen() {
   const { currentUser } = useSelector((state) => state.users);
@@ -11,7 +11,7 @@ export default function CookScreen() {
       <div>
         {currentUser && (
           <div>
-            <h2>Welcome {currentUser.firstName} {currentUser.lastName}</h2>
+            <h2>Welcome Chef {currentUser.firstName} {currentUser.lastName}</h2>
             <div className='row'>
               <div className='col-3'>
                 <h4>My Information</h4>
@@ -24,12 +24,7 @@ export default function CookScreen() {
                 </ul>
               </div>
               <div className='col-9'>
-                <h4>My Dishes</h4>
-                <button>
-                  <Link to="/dish" className='btn btn-primary'>
-                    Go to Dishes List
-                  </Link>
-                </button>
+                <DishesList></DishesList>
               </div>
             </div>
           </div>
