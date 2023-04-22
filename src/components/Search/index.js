@@ -46,7 +46,7 @@ export default function SearchPage() {
               <li className="list-group-item">
                 {dish.name}
                 <button
-                  onClick={() => navigate(`/detail/dish/${dish._id}`)}
+                  onClick={() => navigate(`/details/dish/${dish._id}`)}
                   className="btn btn-warning me-2 float-end"
                 >
                   Detail
