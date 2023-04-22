@@ -1,65 +1,65 @@
-import NavigationSidebar from "./Nag-sidebar";
+import NavigationSidebar from "./navigation";
 import React from "react";
-import { Routes, Route,  } from "react-router";
-import {BrowserRouter} from "react-router-dom";
+import { Routes, Route } from "react-router";
 import { Provider } from "react-redux";
+import store from "../reducers/store";
 import HomePage from "./Home";
 import SearchPage from "./Search";
-import store from "../reducers/store";
-import Profile from "./screens/Profile";
-import AdminScreen from "./screens/AdminScreen"
-import DishesScreen from "./admin/Dishes"
-import Login from "./screens/Login"
-import SignUp from "./screens/SignUp";
-import CookScreen from "./screens/CookScreen";
-import WaiterScreen from "./screens/WaiterScreen";
+import FoodSearch from "./explore";
+import ProfileScreen from "./screens/ProfileScreen";
+import EditProfileScreen from "./screens/EditProfileScreen";
+import AdminScreen from "./screens/AdminScreen";
+import LoginScreen from "./screens/LoginScreen";
+import RegisterScreen from "./screens/RegisterScreen";
+// import CookScreen from "./screens/CookScreen";
+// import WaiterScreen from "./screens/WaiterScreen";
 import MakeAppointments from "./user/MakeAppointments";
+import AppointmentHistory from "./user/AppointmentHistory";
 import OrderDishes from "./user/OrderDishes";
-import OrderHistory from "./user/OrderHistory"
-import EditProfile from "./screens/EditProfile";
-import DishDetial from "./Detail/DishDetial";
-import UserDetail from "./Detail/UserDetail";
-import BookingSystem from "./admin/Appointment";
-import Employees from "./admin/Employees";
-import Users from "./admin/Users";
-import Cooks from "./admin/Cooks";
-import Waiters from "./admin/Waiters.js";
+import OrderHistory from "./user/OrderHistory";
+import EditDishesScreen from "./screens/EditDishesScreen";
+import DishDetail from "./Detail/DishDetail";
+import AccountDetail from "./Detail/AccountDetail";
+import BookingSystem from "./screens/AppointmentScreen";
 import UserScreen from "./screens/UserScreen";
+import ManageCooks from "./admin/ManageCooks";
+import ManageWaiters from "./admin/ManageWaiters.js";
+import ManageUsers from "./admin/ManageUsers";
 
-function RestaurantApp(){
+function RestaurantApp() {
   return (
     <Provider store={store}>
-        <NavigationSidebar/>
-        <Routes>
-            <Route path="/home"    element={<HomePage/>}/>
-            <Route path="/profile" element={<Profile/>}/>
-            <Route path="/profile/:profileId" element={<UserDetail/>}/>
-            <Route path="/search"  element={<SearchPage/>}/>
-            <Route path="/search/:searchItem"  element={<SearchPage/>}/>
-            <Route path="*"        element={<HomePage/>}/>
-            <Route path="/login"  element={<Login/>}/>
-            <Route path="/register" element={<SignUp/>} />
-            <Route path="/admin" element={<AdminScreen/>} />
-            <Route path="/user/makeAppointment" element={<MakeAppointments/>} />
-            <Route path="/user/orderDishes" element={<OrderDishes/>} />
-            <Route path="/user/orderHistory" element={<OrderHistory/>} />
-            <Route path="/user/editProfile" element={<EditProfile/>} />
-            <Route path="/user" element={<UserScreen/>} />
-            <Route path="/dishes" element={<DishesScreen/>} />
-            <Route path="/appointment" element={<BookingSystem/>} />
-            <Route path="/employee" element={<Employees/>} />
-            <Route path="/users" element={<Users/>} />
-            <Route path="/cook" element={<CookScreen/>} />
-            <Route path="/cooks" element={<Cooks/>} />
-            <Route path="/waiters" element={<Waiters/>} />
-            <Route path="/user/makeAppointment" element={<MakeAppointments/>} />
-            <Route path="/user/orderDishes" element={<OrderDishes/>} />
-            <Route path="/user/orderHistory" element={<OrderHistory/>} />
-            <Route path="/user/editProfile" element={<EditProfile/>} />
-            <Route path="/dish/:dishId" element={<DishDetial/>} />
-        </Routes>
+      <NavigationSidebar />
+      <Routes>
+        <Route path="*" element={<HomePage />} />
+        <Route path="/home" element={<HomePage />} />
+        <Route path="/profile" element={<ProfileScreen />} />
+        <Route path="/profile/:profileId" element={<AccountDetail />} />
+        <Route path="/search" element={<SearchPage />} />
+        <Route path="/search/:searchItem" element={<SearchPage />} />
+        <Route path="/explore" element={<FoodSearch />} />
+        <Route path="/login" element={<LoginScreen />} />
+        <Route path="/register" element={<RegisterScreen />} />
+        <Route path="/admin" element={<AdminScreen />} />
+        {/* <Route path="/cook" element={<CookScreen />} /> */}
+        <Route path="/user" element={<UserScreen />} />
+        <Route path="/user/edit-profile" element={<EditProfileScreen />} />
+        <Route path="/user/order-dishes" element={<OrderDishes />} />
+        <Route path="/user/order-history" element={<OrderHistory />} />
+        <Route path="/user/make-appointments" element={<MakeAppointments />} />
+        <Route
+          path="/user/appointment-history"
+          element={<AppointmentHistory />}
+        />
+        <Route path="/dishes" element={<EditDishesScreen />} />
+        <Route path="/details/dish/:dishId" element={<DishDetail />} />
+        <Route path="/appointment" element={<BookingSystem />} />
+        <Route path="/manage-cooks" element={<ManageCooks />} />
+        <Route path="/manage-waiters" element={<ManageWaiters />} />
+        <Route path="/manage-users" element={<ManageUsers />} />
+      </Routes>
     </Provider>
-);
+  );
 }
 
 export default RestaurantApp;
