@@ -5,6 +5,7 @@ import { Provider } from "react-redux";
 import store from "../reducers/store";
 import HomePage from "./home";
 import SearchPage from "./search";
+import FoodSearch from "./explore";
 import ProfileScreen from "./screens/ProfileScreen";
 import EditProfileScreen from "./screens/EditProfileScreen";
 import AdminScreen from "./screens/AdminScreen";
@@ -36,6 +37,7 @@ function RestaurantApp() {
         <Route path="/profile/:profileId" element={<AccountDetail />} />
         <Route path="/search" element={<SearchPage />} />
         <Route path="/search/:searchItem" element={<SearchPage />} />
+        <Route path="/explore" element={<FoodSearch />} />
         <Route path="/login" element={<LoginScreen />} />
         <Route path="/register" element={<RegisterScreen />} />
         <Route path="/admin" element={<AdminScreen />} />

@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { findAppointmentsByUserIdThunk } from "../../services/appointments/appointments-thunks";
 
@@ -34,7 +35,12 @@ export default function AppointmentHistory() {
 
   return (
     <div className="p-5">
-      <h2>Appointment History</h2>
+      <h2>
+        Appointment History
+        <Link to={"/user"} className="col-1 rounded-pill btn border float-end">
+          <b>Back</b>
+        </Link>
+      </h2>
       {renderAppointments()}
     </div>
   );

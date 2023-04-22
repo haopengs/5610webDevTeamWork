@@ -1,5 +1,5 @@
 import axios from "axios";
-const DISHES_API_URL = "http://localhost:4000/api/dishes";
+const DISHES_API_URL = `${process.env.REACT_APP_SERVER_API_URL}/dishes`;
 
 export const findAllDishes = async () => {
   const response = await axios.get(DISHES_API_URL);

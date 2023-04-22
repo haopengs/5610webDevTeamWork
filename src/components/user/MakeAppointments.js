@@ -13,6 +13,7 @@ export default function MakeAppointments() {
 
   const [table, setTable] = useState("");
   const [time, setTime] = useState("");
+  const [showAppointmentSuccess, setShowAppointmentSuccess] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -22,12 +23,14 @@ export default function MakeAppointments() {
       time,
       user_id: currentAccount._id,
     });
+    setShowAppointmentSuccess(true);
+    setTimeout(() => setShowAppointmentSuccess(false), 1000);
     setTable("");
     setTime("");
   };
 
   return (
-    <div className="p-5">
+    <div className="container p-5">
       <div>
         <h2>
           Make Appointments
@@ -39,19 +42,40 @@ export default function MakeAppointments() {
           </Link>
         </h2>
       </div>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="number"
-          placeholder="Table"
-          value={table}
-          onChange={(e) => setTable(parseInt(e.target.value, 10))}
-        />
-        <input
-          type="time"
-          value={time}
-          onChange={(e) => setTime(e.target.value)}
-        />
-        <button type="submit">{"Add"} Appointment</button>
+      {showAppointmentSuccess && (
+        <div className="alert alert-success mt-2" role="alert">
+          Appointment successfully booked!
+        </div>
+      )}
+      <form onSubmit={handleSubmit} className="mt-4">
+        <div className="col-4 mb-3">
+          <label htmlFor="table" className="form-label">
+            Table
+          </label>
+          <input
+            type="number"
+            id="table"
+            className="form-control"
+            placeholder="Table"
+            value={table}
+            onChange={(e) => setTable(parseInt(e.target.value, 10))}
+          />
+        </div>
+        <div className="col-4 mb-3">
+          <label htmlFor="time" className="form-label">
+            Time
+          </label>
+          <input
+            type="time"
+            id="time"
+            className="form-control"
+            value={time}
+            onChange={(e) => setTime(e.target.value)}
+          />
+        </div>
+        <button type="submit" className="btn btn-warning">
+          Submit
+        </button>
       </form>
     </div>
   );

@@ -1,5 +1,5 @@
 import axios from "axios";
-const APPOINTMENTS_API_URL = "http://localhost:4000/api/appointments";
+const APPOINTMENTS_API_URL = `${process.env.REACT_APP_SERVER_API_URL}/appointments`;
 
 export const findAllAppointments = async () => {
   const response = await axios.get(APPOINTMENTS_API_URL);

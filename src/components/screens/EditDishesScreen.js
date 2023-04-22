@@ -62,6 +62,7 @@ function EditDishesScreen() {
       chef: newDishChef,
       description: newDishDescription,
       price: newDishPrice,
+      image: "default.jpeg",
     };
     await dispatch(createDishThunk(newDish));
     setNewDishName("");

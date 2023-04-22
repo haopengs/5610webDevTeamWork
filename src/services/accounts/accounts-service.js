@@ -1,5 +1,5 @@
 import axios from "axios";
-const ACCOUNTS_API_URL = "http://localhost:4000/api/accounts";
+const ACCOUNTS_API_URL = `${process.env.REACT_APP_SERVER_API_URL}/accounts`;
 
 export const findAllAccounts = async (type) => {
   const response = await axios.get(`${ACCOUNTS_API_URL}?type=${type}`);

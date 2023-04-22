@@ -63,6 +63,11 @@ const NavigationSidebar = () => {
               Search
             </Link>
           </li>
+          <li className={`nav-item ${active === "explore" ? "active" : ""}`}>
+            <Link className="nav-link" to="/explore">
+              Explore
+            </Link>
+          </li>
         </ul>
       </div>
       <i className="fas fa-user"></i>{" "}

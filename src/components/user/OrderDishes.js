@@ -55,7 +55,7 @@ export default function OrderDishes() {
       </div>
       {showOrderSuccess && (
         <div className="alert alert-success mt-2" role="alert">
-          Order success!
+          Order successfully placed!
         </div>
       )}
       <ul className="list-group mt-2">
