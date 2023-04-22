@@ -23,9 +23,13 @@ export default function SearchPage() {
     navigate(`/search/${searchQuery}`)
   };
   return (
-    <div>
-        <input type="text" value={searchQuery} onChange={(e) =>{setSearchQuery(e.target.value)}} />
-      <button onClick={handleSearch}> search</button>
+    <div className='p-5 container d-flex flex-column align-items-center'>
+      <div>
+        <input type="text" value={searchQuery} onChange={(e) => { setSearchQuery(e.target.value) }} />
+        <button className='btn btn-warning ms-4 ' onClick={handleSearch}> search</button>
+
+      </div>
+ 
       <ul className='list-group'>
         {searchResults ? (
               searchResults.map((dish) => {
