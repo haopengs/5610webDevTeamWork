@@ -22,14 +22,14 @@ const dishesSlice = createSlice({
   extraReducers: {
     [updateDishThunk.fulfilled]: (state, action) => {
       state.dishes = state.dishes.map((dish) =>
-        dish.id === action.payload.id ? action.payload : dish
+        dish._id === action.payload._id ? action.payload : dish
       );
     },
     [createDishThunk.fulfilled]: (state, action) => {
       state.dishes.push(action.payload);
     },
     [deleteDishThunk.fulfilled]: (state, action) => {
-      state.dishes = state.dishes.filter((dish) => dish.id !== action.payload);
+      state.dishes = state.dishes.filter((dish) => dish._id !== action.payload);
     },
     [findAllDishesThunk.pending]: (state, action) => {
       state.loading = true;

@@ -13,6 +13,7 @@ export default function SearchPage() {
 
   useEffect(() => {
     if (!currentAccount) {
+      alert("Please log in first!");
       navigate("/login");
     }
   }, [currentAccount, navigate]);
@@ -45,7 +46,7 @@ export default function SearchPage() {
               <li className="list-group-item">
                 {dish.name}
                 <button
-                  onClick={() => navigate(`/dish/${dish._id}`)}
+                  onClick={() => navigate(`/detail/dish/${dish._id}`)}
                   className="btn btn-warning me-2 float-end"
                 >
                   Detail

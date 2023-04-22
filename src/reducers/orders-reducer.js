@@ -30,7 +30,7 @@ const ordersSlice = createSlice({
     },
     [deleteOrderThunk.fulfilled]: (state, action) => {
       state.orders = state.orders.filter(
-        (order) => order.id !== action.payload
+        (order) => order._id !== action.payload
       );
     },
   },

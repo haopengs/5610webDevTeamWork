@@ -71,7 +71,7 @@ export default function OrderDishes() {
                   Order
                 </button>
                 <button
-                  onClick={() => navigate(`/dish/${dish._id}`)}
+                  onClick={() => navigate(`details/dish/${dish._id}`)}
                   className="btn btn-warning me-2 float-end"
                 >
                   Detail

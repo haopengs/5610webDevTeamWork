@@ -25,5 +25,5 @@ export const deleteAccount = (id) => {
 };
 
 export const updateAccount = (newAccount) => {
-  return axios.put(`${ACCOUNTS_API_URL}/${newAccount.id}`, newAccount);
+  return axios.put(`${ACCOUNTS_API_URL}/${newAccount._id}`, newAccount);
 };

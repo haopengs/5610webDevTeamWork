@@ -21,7 +21,7 @@ const appointmentsSlice = createSlice({
   extraReducers: {
     [updateAppointmentThunk.fulfilled]: (state, action) => {
       state.appointments = state.appointments.map((appointment) =>
-        appointment.id === action.payload.id ? action.payload : appointment
+        appointment._id === action.payload._id ? action.payload : appointment
       );
     },
     [createAppointmentThunk.fulfilled]: (state, action) => {
@@ -29,7 +29,7 @@ const appointmentsSlice = createSlice({
     },
     [deleteAppointmentThunk.fulfilled]: (state, action) => {
       state.appointments = state.appointments.filter(
-        (appointment) => appointment.id !== action.payload
+        (appointment) => appointment._id !== action.payload
       );
     },
     [findAllAppointmentsThunk.pending]: (state, action) => {
