@@ -1,43 +1,60 @@
-import React, { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { useEffect } from 'react'
-import { findOrdersByUserIdThunk,deleteOrderThunk } from '../../services/orders/order_thunks'
-import { Link } from 'react-router-dom'
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import {
+  findOrdersByUserIdThunk,
+  deleteOrderThunk,
+} from "../../services/orders/order-thunks";
+import { Link } from "react-router-dom";
 
+export default function OrderHistory() {
+  const { curOrders } = useSelector((state) => state.orders);
+  const { currentAccount } = useSelector((state) => state.accounts);
 
-export default function OrderDishes() {
-  const { curOrders } = useSelector((state) => state.orders) 
-  const { currentUser } = useSelector((state) => state.users);
+  const dispatch = useDispatch();
+  const [deletedOrder, setDeletedOrder] = useState(null);
 
-  const dispatch = useDispatch()
+  const handleDeleteOrder = async (orderId) => {
+    await dispatch(deleteOrderThunk(orderId));
+    setDeletedOrder(orderId);
+  };
 
   useEffect(() => {
-    dispatch(findOrdersByUserIdThunk(currentUser.id))
-  }, [])
+    dispatch(findOrdersByUserIdThunk(currentAccount._id));
+  }, [dispatch, deletedOrder]);
 
   return (
-    <div className='p-5'>
-      <div className=''>
+    <div className="p-5">
+      <div>
         <h2>
           Orders History
-          <Link to={"/user"} className='col-1 rounded-pill btn border float-end'><b>Back</b></Link>
-        </h2> 
+          <Link
+            to={"/user"}
+            className="col-1 rounded-pill btn border float-end"
+          >
+            <b>Back</b>
+          </Link>
+        </h2>
       </div>
-      <ul className='list-group'>
-          {curOrders && (
-              curOrders.map((curOrder) => {
-                  return (
-                      <li className='list-group-item'>
-                          {curOrder.dish}
-                          <button onClick={() => dispatch(deleteOrderThunk(curOrder.id))} className="btn btn-warning float-end">
-                              Delete
-                          </button>
-                      </li>
-                  )
-              }
-              )   
-          )}
+      <ul className="list-group">
+        {curOrders &&
+          curOrders.map((curOrder) => {
+            if (curOrder._id === deletedOrder) {
+              return null;
+            }
+            return (
+              <li className="list-group-item">
+                {curOrder.dish_name}
+                <button
+                  onClick={() => handleDeleteOrder(curOrder._id)}
+                  className="btn btn-warning float-end"
+                >
+                  Delete
+                </button>
+              </li>
+            );
+          })}
       </ul>
     </div>
-  )
+  );
 }
