@@ -37,6 +37,9 @@ export default function WaiterScreen() {
                   <li className="list-group-item">
                     Email: {currentAccount.email}
                   </li>
+                  <li className="list-group-item">
+                    Shift: {currentAccount.attributes.shift}
+                  </li>
                 </ul>
               </div>
               <div className="col-9">
