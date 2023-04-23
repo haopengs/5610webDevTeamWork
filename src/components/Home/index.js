@@ -37,12 +37,28 @@ function HomePage() {
               </li>
               <li className="list-group-item">
                 Birthday:{" "}
-                {new Date(currentAccount.birthday)
-                  .toISOString()
-                  .substr(0, 10)}
+                {new Date(currentAccount.birthday).toISOString().substr(0, 10)}
               </li>
               <li className="list-group-item">Phone: {currentAccount.phone}</li>
               <li className="list-group-item">Email: {currentAccount.email}</li>
+              {currentAccount.role === "user" && (
+                <li className="list-group-item">
+                  {" "}
+                  Favorite Food : {currentAccount.attributes.favorites}{" "}
+                </li>
+              )}
+              {currentAccount.role === "cook" && (
+                <li className="list-group-item">
+                  {" "}
+                  Specialty : {currentAccount.attributes.specialty}{" "}
+                </li>
+              )}
+              {currentAccount.role === "waiter" && (
+                <li className="list-group-item">
+                  {" "}
+                  Shift : {currentAccount.attributes.shift}{" "}
+                </li>
+              )}
             </>
           )}
         </ul>
