@@ -47,7 +47,7 @@ export default function UserScreen() {
             Welcome {currentAccount.firstName} {currentAccount.lastName}
           </h3>
           <h4 className="col-10">User Information</h4>
-          <Link className="col-2 d-none d-md-block rounded-pill btn border float-end text-decoration-none" to="/user/edit-profile">
+          <Link className="col-2 d-none d-md-block rounded-pill btn border float-end text-decoration-none " to="/user/edit-profile">
             <b className={" "}>
               Edit Profile
             </b>
