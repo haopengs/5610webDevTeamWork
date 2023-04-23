@@ -74,12 +74,26 @@ function BookingForm({ onSubmit, clearForm, appointment, editing }) {
   useEffect(() => {
     setName(appointment?.name || "");
     setTable(appointment?.table || "");
-    setTime(formatTime(appointment?.time) || "");
+    setTime(appointment?.time || "");
   }, [appointment]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit({ _id: appointment?._id, name, table, time });
+    const currentDate = new Date();
+    const [inputHours, inputMinutes] = time.split(":");
+    const localDate = new Date(
+      currentDate.getFullYear(),
+      currentDate.getMonth(),
+      currentDate.getDate(),
+      parseInt(inputHours, 10),
+      parseInt(inputMinutes, 10)
+    );
+    onSubmit({
+      _id: appointment?._id,
+      name,
+      table,
+      time: localDate.toISOString(),
+    });
     clearForm();
   };
 

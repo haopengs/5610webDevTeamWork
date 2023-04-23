@@ -20,7 +20,7 @@ export default function SearchPage() {
         handleSearch();
       }
     }
-  }, [currentAccount,searchItem]);
+  }, [currentAccount, navigate, searchItem]);
 
   const handleSearch = async () => {
     const response = await findDishesByKeyword(searchQuery);

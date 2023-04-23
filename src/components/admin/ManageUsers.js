@@ -25,14 +25,15 @@ export default function ManageUsers() {
   };
 
   return (
-    <div>
-      <h2>Users DashBoard</h2>
-      <table>
+    <div className="container">
+      <h2>Users Dashboard</h2>
+      <table className="table table-striped">
         <thead>
           <tr>
             <th>ID</th>
             <th>Name</th>
             <th>Role</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -42,11 +43,12 @@ export default function ManageUsers() {
               <td>
                 {user.firstname} {user.lastname}
               </td>
+              <td>{user.role}</td>
               <td>
-                <button onClick={() => handleUserClick(user._id)}>
+                <button className="btn btn-primary me-2" onClick={() => handleUserClick(user._id)}>
                   Check Info
                 </button>
-                <button onClick={() => handleDeleteUserClick(user._id)}>
+                <button className="btn btn-danger" onClick={() => handleDeleteUserClick(user._id)}>
                   Delete
                 </button>
               </td>

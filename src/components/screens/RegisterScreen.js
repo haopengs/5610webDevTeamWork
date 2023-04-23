@@ -12,9 +12,18 @@ export default function RegisterScreen() {
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [role, setRole] = useState("");
+  const [specialAttribute, setSpecialAttribute] = useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const register = () => {
+    let attributes = {};
+    if (role === "user") {
+      attributes.favorites = specialAttribute;
+    } else if (role === "cook") {
+      attributes.specialty = specialAttribute;
+    } else if (role === "waiter") {
+      attributes.shift = specialAttribute;
+    }
     dispatch(
       createAccountThunk({
         firstname,
@@ -25,6 +34,7 @@ export default function RegisterScreen() {
         phone,
         email,
         role,
+        attributes,
       })
     );
     navigate("/login");
@@ -137,6 +147,46 @@ export default function RegisterScreen() {
         />{" "}
         Waiter
       </div>
+      {role === "user" && (
+        <div className="mt-4">
+          <label>Favorite Food</label>
+          <input
+            type="text"
+            className="form-control"
+            onChange={(e) => {
+              setSpecialAttribute(e.target.value);
+            }}
+          />
+        </div>
+      )}
+      {role === "cook" && (
+        <div className="mt-4">
+          <label>Specialty</label>
+          <input
+            type="text"
+            className="form-control"
+            onChange={(e) => {
+              setSpecialAttribute(e.target.value);
+            }}
+          />
+        </div>
+      )}
+      {role === "waiter" && (
+        <div className="mt-4">
+          <label>Shift</label>
+          <select
+            className="form-select"
+            onChange={(e) => {
+              setSpecialAttribute(e.target.value);
+            }}
+          >
+            <option value="">--Please choose a shift--</option>
+            <option value="Morning">Morning</option>
+            <option value="Afternoon">Afternoon</option>
+            <option value="Evening">Evening</option>
+          </select>
+        </div>
+      )}
       <button onClick={register} className="btn btn-warning mt-4 ">
         Register
       </button>

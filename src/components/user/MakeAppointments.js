@@ -17,10 +17,19 @@ export default function MakeAppointments() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const currentDate = new Date();
+    const [inputHours, inputMinutes] = time.split(":");
+    const localDate = new Date(
+      currentDate.getFullYear(),
+      currentDate.getMonth(),
+      currentDate.getDate(),
+      parseInt(inputHours, 10),
+      parseInt(inputMinutes, 10)
+    );
     createAppointment({
       name: `${currentAccount.firstname} ${currentAccount.lastname}`,
       table,
-      time,
+      time: localDate.toISOString(),
       user_id: currentAccount._id,
     });
     setShowAppointmentSuccess(true);

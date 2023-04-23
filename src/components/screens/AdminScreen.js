@@ -45,21 +45,15 @@ export default function AdminScreen() {
       <div className="ms-5">
         <h3>User Information</h3>
         <ul className="list-group ms-3">
-          <li className="list-group-tem">
-            {" "}
-            First Name : {currentAccount.firstname}
-          </li>
-          <li className="list-group-tem">
-            {" "}
-            Last Name : {currentAccount.lastname}
-          </li>
-          <li className="list-group-tem">
+          <li> First Name : {currentAccount.firstname}</li>
+          <li> Last Name : {currentAccount.lastname}</li>
+          <li>
             {" "}
             Birthday :{" "}
             {new Date(currentAccount.birthday).toISOString().substr(0, 10)}
           </li>
-          <li className="list-group-tem"> Phone : {currentAccount.phone} </li>
-          <li className="list-group-tem"> Email : {currentAccount.email} </li>
+          <li> Phone : {currentAccount.phone} </li>
+          <li> Email : {currentAccount.email} </li>
         </ul>
       </div>
     );

@@ -36,6 +36,9 @@ export default function CookScreen() {
                   <li className="list-group-item">
                     Email: {currentAccount.email}
                   </li>
+                  <li className="list-group-item">
+                    Specialty: {currentAccount.attributes.specialty}
+                  </li>
                 </ul>
               </div>
               <div className="col-9">

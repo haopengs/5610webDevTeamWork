@@ -6,6 +6,7 @@ import {
   deleteAccountThunk,
 } from "../../services/accounts/accounts-thunks.js";
 import { useNavigate } from "react-router-dom";
+import { Table, Button } from "react-bootstrap";
 
 export default function ManageWaiters() {
   const { accounts } = useSelector((state) => state.accounts);
@@ -27,11 +28,12 @@ export default function ManageWaiters() {
   return (
     <div>
       <h2>Waiters DashBoard</h2>
-      <table>
+      <Table striped bordered hover>
         <thead>
           <tr>
             <th>ID</th>
             <th>Name</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
@@ -42,17 +44,17 @@ export default function ManageWaiters() {
                 {waiter.firstname} {waiter.lastname}
               </td>
               <td>
-                <button onClick={() => handleWaiterClick(waiter._id)}>
+                <Button onClick={() => handleWaiterClick(waiter._id)}>
                   Check Info
-                </button>
-                <button onClick={() => handleDeleteWaiterClick(waiter._id)}>
+                </Button>
+                <Button onClick={() => handleDeleteWaiterClick(waiter._id)}>
                   Delete
-                </button>
+                </Button>
               </td>
             </tr>
           ))}
         </tbody>
-      </table>
+      </Table>
     </div>
   );
 }
