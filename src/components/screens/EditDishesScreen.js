@@ -5,6 +5,14 @@ import {
   createDishThunk,
   updateDishThunk,
 } from "../../services/dishes/dishes-thunks";
+import {
+  Button,
+  Form,
+  ListGroup,
+  Container,
+  Row,
+  Col,
+} from "react-bootstrap";
 
 function EditDishesScreen() {
   const [dishes, setDishes] = useState([]);
@@ -77,10 +85,10 @@ function EditDishesScreen() {
     const isEditing = index === editIndex;
 
     return (
-      <li key={index}>
+      <ListGroup.Item key={index}>
         <h3>
           {isEditing ? (
-            <input
+            <Form.Control
               type="text"
               value={dish.name}
               onChange={(event) =>
@@ -94,7 +102,7 @@ function EditDishesScreen() {
         <div>
           Chef:{" "}
           {isEditing ? (
-            <input
+            <Form.Control
               type="text"
               value={dish.chef}
               onChange={(event) =>
@@ -110,7 +118,7 @@ function EditDishesScreen() {
           {dish.ingredients.map((ingredient, ingredientIndex) => (
             <li key={ingredientIndex}>
               {isEditing ? (
-                <input
+                <Form.Control
                   type="text"
                   value={ingredient}
                   onChange={(event) =>
@@ -130,7 +138,8 @@ function EditDishesScreen() {
         <div>
           Description:{" "}
           {isEditing ? (
-            <textarea
+            <Form.Control
+              as="textarea"
               value={dish.description}
               onChange={(event) =>
                 handleDishChange(index, "description", event.target.value)
@@ -143,7 +152,7 @@ function EditDishesScreen() {
         <div>
           Price:{" "}
           {isEditing ? (
-            <input
+            <Form.Control
               type="number"
               value={dish.price}
               onChange={(event) =>
@@ -155,65 +164,69 @@ function EditDishesScreen() {
           )}
         </div>
         {isEditing ? (
-          <button onClick={handleSaveClick}>Save</button>
+          <Button variant="success" onClick={handleSaveClick}>Save</Button>
         ) : (
-          <button onClick={() => handleEditClick(index)}>Edit</button>
+          <Button variant="primary" onClick={() => handleEditClick(index)}>Edit</Button>
         )}
-      </li>
+      </ListGroup.Item>
     );
   };
 
   return (
-    <>
-      <div>
-        <h2>Dishes</h2>
-        <ul>{dishes.map(renderDish)}</ul>
-        <div>
+    <Container>
+      <h2>Dishes</h2>
+      <ListGroup>{dishes.map(renderDish)}</ListGroup>
+      <Row>
+        <Col>
           <h3>Create New Dish</h3>
-          <div>
-            Name:{" "}
-            <input
-              type="text"
-              value={newDishName}
-              onChange={(event) => setNewDishName(event.target.value)}
-            />
-          </div>
-          <div>
-            Chef:{" "}
-            <input
-              type="text"
-              value={newDishChef}
-              onChange={(event) => setNewDishChef(event.target.value)}
-            />
-          </div>
-          <div>
-            Ingredients (comma-separated):{" "}
-            <input
-              type="text"
-              value={newDishIngredients}
-              onChange={(event) => setNewDishIngredients(event.target.value)}
-            />
-          </div>
-          <div>
-            Description:{" "}
-            <textarea
-              value={newDishDescription}
-              onChange={(event) => setNewDishDescription(event.target.value)}
-            />
-          </div>
-          <div>
-            Price:{" "}
-            <input
-              type="number"
-              value={newDishPrice}
-              onChange={(event) => setNewDishPrice(event.target.value)}
-            />
-          </div>
-          <button onClick={handleAddNewDish}>Add New Dish</button>
-        </div>
-      </div>
-    </>
+          <Form>
+            <Form.Group controlId="formDishName">
+              <Form.Label>Name:</Form.Label>
+              <Form.Control
+                type="text"
+                value={newDishName}
+                onChange={(event) => setNewDishName(event.target.value)}
+              />
+            </Form.Group>
+            <Form.Group controlId="formDishChef">
+              <Form.Label>Chef:</Form.Label>
+              <Form.Control
+                type="text"
+                value={newDishChef}
+                onChange={(event) => setNewDishChef(event.target.value)}
+              />
+            </Form.Group>
+            <Form.Group controlId="formDishIngredients">
+              <Form.Label>Ingredients (comma-separated):</Form.Label>
+              <Form.Control
+                type="text"
+                value={newDishIngredients}
+                onChange={(event) => setNewDishIngredients(event.target.value)}
+              />
+            </Form.Group>
+            <Form.Group controlId="formDishDescription">
+              <Form.Label>Description:</Form.Label>
+              <Form.Control
+                as="textarea"
+                value={newDishDescription}
+                onChange={(event) => setNewDishDescription(event.target.value)}
+              />
+            </Form.Group>
+            <Form.Group controlId="formDishPrice">
+              <Form.Label>Price:</Form.Label>
+              <Form.Control
+                type="number"
+                value={newDishPrice}
+                onChange={(event) => setNewDishPrice(event.target.value)}
+              />
+            </Form.Group>
+            <Button variant="primary" onClick={handleAddNewDish}>Add New Dish</Button>
+          </Form>
+        </Col>
+      </Row>
+    </Container>
   );
-}
+};
 
 export default EditDishesScreen;
+

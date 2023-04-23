@@ -24,9 +24,9 @@ function HomePage() {
 
   const userInfo = () => {
     return (
-      <div className="ms-5">
+      <div>
         <h3>Your Info</h3>
-        <ul className="list-group ms-3">
+        <ul className="list-group">
           {currentAccount && (
             <>
               <li className="list-group-item">
@@ -67,10 +67,10 @@ function HomePage() {
   };
 
   return (
-    <div>
+    <div className="p-5">
       <h1 className="mb-4">5610 Restaurant</h1>
       <div className="row">
-        <div className="col-md-9">
+        <div className="col-md-12">
           <h2>New Dishes</h2>
           <ul>
             {dishes
@@ -99,8 +99,8 @@ function HomePage() {
               ))}
             </tbody>
           </table>
+          {userInfo()}
         </div>
-        <div className="col-md-3">{userInfo()}</div>
       </div>
     </div>
   );

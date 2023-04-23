@@ -6,7 +6,7 @@ export default function WaiterScreen() {
   const { currentAccount } = useSelector((state) => state.accounts);
 
   return (
-    <div>
+    <div className="p-5">
       <h1>Waiter Dashboard</h1>
       <div>
         {currentAccount && (

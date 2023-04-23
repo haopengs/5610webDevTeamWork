@@ -45,7 +45,7 @@ export default function ManageUsers() {
               </td>
               <td>{user.role}</td>
               <td>
-                <button className="btn btn-primary me-2" onClick={() => handleUserClick(user._id)}>
+                <button className="btn btn-warning me-2" onClick={() => handleUserClick(user._id)}>
                   Check Info
                 </button>
                 <button className="btn btn-danger" onClick={() => handleDeleteUserClick(user._id)}>

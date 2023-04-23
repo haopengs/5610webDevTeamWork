@@ -6,7 +6,7 @@ export default function CookScreen() {
   const { currentAccount } = useSelector((state) => state.accounts);
 
   return (
-    <div>
+    <div className="p-5">
       <h1>Cook Dashboard</h1>
       <div>
         {currentAccount && (
