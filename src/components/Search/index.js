@@ -15,14 +15,12 @@ export default function SearchPage() {
     if (!currentAccount) {
       alert("Please log in first!");
       navigate("/login");
+    } else {
+      if (searchItem) {
+        handleSearch();
+      }
     }
-  }, [currentAccount, navigate]);
-
-  useEffect(() => {
-    if (searchItem) {
-      handleSearch();
-    }
-  }, [searchItem]);
+  }, [currentAccount, navigate, searchItem]);
 
   const handleSearch = async () => {
     const response = await findDishesByKeyword(searchQuery);
