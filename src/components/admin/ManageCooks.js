@@ -6,6 +6,8 @@ import {
   deleteAccountThunk,
 } from "../../services/accounts/accounts-thunks.js";
 import { useNavigate } from "react-router-dom";
+import Table from 'react-bootstrap/Table';
+import Button from 'react-bootstrap/Button';
 
 export default function ManageCooks() {
   const { accounts } = useSelector((state) => state.accounts);
@@ -27,11 +29,12 @@ export default function ManageCooks() {
   return (
     <div>
       <h2>Cooks DashBoard</h2>
-      <table>
+      <Table striped bordered hover>
         <thead>
           <tr>
             <th>ID</th>
             <th>Name</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
@@ -42,17 +45,13 @@ export default function ManageCooks() {
                 {cook.firstname} {cook.lastname}
               </td>
               <td>
-                <button onClick={() => handleCookClick(cook._id)}>
-                  Check Info
-                </button>
-                <button onClick={() => handleDeleteCookClick(cook._id)}>
-                  Delete
-                </button>
+                <Button variant="primary" onClick={() => handleCookClick(cook._id)}>Check Info</Button>{' '}
+                <Button variant="danger" onClick={() => handleDeleteCookClick(cook._id)}>Delete</Button>{' '}
               </td>
             </tr>
           ))}
         </tbody>
-      </table>
+      </Table>
     </div>
   );
 }

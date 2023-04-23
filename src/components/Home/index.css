@@ -1,3 +1,4 @@
+/* Default styles */
 .wd-tabs li {
   display: inline;
 }
@@ -50,6 +51,7 @@ ul {
 table {
   border-collapse: collapse;
   width: 100%;
+  margin-top: 2em;
 }
 
 th,
@@ -64,4 +66,60 @@ th {
 
 tr:nth-child(even) {
   background-color: #f2f2f2;
+}
+
+/* Media queries */
+@media (max-width: 768px) {
+  /* Adjust font sizes for smaller screens */
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    margin-top: 1rem;
+  }
+
+  ul li {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  table {
+    margin-top: 1.5em;
+    font-size: 0.75rem;
+  }
+
+  th,
+  td {
+    padding: 0.25em;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Adjust layout for even smaller screens */
+  h1 {
+    font-size: 1.5rem;
+    margin-top: 1rem;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+    margin-top: 1rem;
+  }
+
+  ul li {
+    font-size: 0.875rem;
+    margin-bottom: 0.25rem;
+  }
+
+  table {
+    margin-top: 1em;
+    font-size: 0.625rem;
+  }
+
+  th,
+  td {
+    padding: 0.125em;
+  }
 }
