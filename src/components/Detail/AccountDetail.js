@@ -16,15 +16,15 @@ export default function AccountDetail() {
   }, [dispatch, profileId]);
 
   return (
-    <div>
+    <div className="p-5">
       <h3>Account Detail</h3>
       {oneAccount ? (
-        <ul>
-          <li>
+        <ul className="list-group">
+          <li className="list-group-item">
             Name : {oneAccount.firstname} {oneAccount.lastname}
           </li>
-          <li>Phone : {oneAccount.phone}</li>
-          <li>Email : {oneAccount.email}</li>
+          <li className="list-group-item">Phone : {oneAccount.phone}</li>
+          <li className="list-group-item">Email : {oneAccount.email}</li>
         </ul>
       ) : (
         <div>Loading</div>

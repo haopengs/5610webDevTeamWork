@@ -11,22 +11,27 @@ export default function UserScreen() {
         <ul className="mt-2 list-group">
           <li className="list-group-item">User Links</li>
           <li className="list-group-item">
-            <Link className="nav-link" to={"/user/order-dishes"}>
+            <i class="bi bi-menu-up float-start"></i>
+            <Link className="nav-link ms-4 d-none d-md-block" to={"/user/order-dishes"}>
               Order Dishes
             </Link>
           </li>
+          
           <li className="list-group-item">
-            <Link className="nav-link" to={"/user/order-history"}>
+            <i class="bi bi-clock-history float-start"></i>  
+            <Link className="nav-link ms-4 d-none d-md-block" to={"/user/order-history"}>
               Order History
             </Link>
           </li>
           <li className="list-group-item">
-            <Link className="nav-link" to={"/user/make-appointments"}>
+            <i class="bi bi-calendar-check float-start"></i>
+            <Link className="nav-link ms-4 d-none d-md-block" to={"/user/make-appointments"}>
               Make Appointments
             </Link>
           </li>
           <li className="list-group-item">
-            <Link className="nav-link" to={"/user/appointment-history"}>
+            <i class="bi bi-calendar3 float-start"></i>
+            <Link className="nav-link ms-4 d-none d-md-block" to={"/user/appointment-history"}>
               Appointment History
             </Link>
           </li>
@@ -41,14 +46,14 @@ export default function UserScreen() {
           <h3>
             Welcome {currentAccount.firstName} {currentAccount.lastName}
           </h3>
-          <h4 className="col-4">User Information</h4>
-          <Link className="col-8" to="/user/edit-profile">
-            <b className={"col-3 rounded-pill btn border float-end"}>
+          <h4 className="col-10">User Information</h4>
+          <Link className="col-2 d-none d-md-block rounded-pill btn border float-end text-decoration-none" to="/user/edit-profile">
+            <b className={" "}>
               Edit Profile
             </b>
           </Link>
         </div>
-        <ul className="list-group ms-3">
+        <ul className="list-group">
           <li className="list-group-tem">
             First Name : {currentAccount.firstname}
           </li>

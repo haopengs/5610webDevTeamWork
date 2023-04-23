@@ -20,10 +20,18 @@ export default function ProfileScreen() {
   return (
     <div>
       <div>
-        {currentAccount.role === "admin" && <AdminScreen />}
-        {currentAccount.role === "user" && <UserScreen />}
-        {currentAccount.role === "cook" && <CookScreen />}
-        {currentAccount.role === "waiter" && <WaiterScreen />}
+         {currentAccount && (
+          currentAccount.role === "admin" && <AdminScreen />
+        )}
+        {currentAccount && (
+          currentAccount.role === "user" && <UserScreen />
+        )}
+        {currentAccount && (
+          currentAccount.role === "cook" && <CookScreen />
+        )}
+        {currentAccount && (
+          currentAccount.role === "waiter" && <WaiterScreen />
+        )}
       </div>
     </div>
   );
