@@ -60,7 +60,7 @@ export default function AdminScreen() {
   };
 
   return (
-    <div>
+    <div className="p-5">
       <h1>Admin Dashboard</h1>
       <div>
         {currentAccount && (

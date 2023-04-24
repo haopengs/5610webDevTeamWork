@@ -24,9 +24,9 @@ function HomePage() {
 
   const userInfo = () => {
     return (
-      <div className="ms-5">
+      <div>
         <h3>Your Info</h3>
-        <ul className="list-group ms-3">
+        <ul className="list-group">
           {currentAccount && (
             <>
               <li className="list-group-item">
@@ -37,12 +37,28 @@ function HomePage() {
               </li>
               <li className="list-group-item">
                 Birthday:{" "}
-                {new Date(currentAccount.birthday)
-                  .toISOString()
-                  .substr(0, 10)}
+                {new Date(currentAccount.birthday).toISOString().substr(0, 10)}
               </li>
               <li className="list-group-item">Phone: {currentAccount.phone}</li>
               <li className="list-group-item">Email: {currentAccount.email}</li>
+              {currentAccount.role === "user" && (
+                <li className="list-group-item">
+                  {" "}
+                  Favorite Food : {currentAccount.attributes.favorites}{" "}
+                </li>
+              )}
+              {currentAccount.role === "cook" && (
+                <li className="list-group-item">
+                  {" "}
+                  Specialty : {currentAccount.attributes.specialty}{" "}
+                </li>
+              )}
+              {currentAccount.role === "waiter" && (
+                <li className="list-group-item">
+                  {" "}
+                  Shift : {currentAccount.attributes.shift}{" "}
+                </li>
+              )}
             </>
           )}
         </ul>
@@ -51,10 +67,10 @@ function HomePage() {
   };
 
   return (
-    <div>
+    <div className="p-5">
       <h1 className="mb-4">5610 Restaurant</h1>
       <div className="row">
-        <div className="col-md-9">
+        <div className="col-md-12">
           <h2>New Dishes</h2>
           <ul>
             {dishes
@@ -83,8 +99,8 @@ function HomePage() {
               ))}
             </tbody>
           </table>
+          {userInfo()}
         </div>
-        <div className="col-md-3">{userInfo()}</div>
       </div>
     </div>
   );

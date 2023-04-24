@@ -44,12 +44,8 @@ export default function ManageWaiters() {
                 {waiter.firstname} {waiter.lastname}
               </td>
               <td>
-                <Button onClick={() => handleWaiterClick(waiter._id)}>
-                  Check Info
-                </Button>
-                <Button onClick={() => handleDeleteWaiterClick(waiter._id)}>
-                  Delete
-                </Button>
+                <Button variant="warning" onClick={() => handleWaiterClick(waiter._id)}>Check Info</Button>{' '}
+                <Button variant="danger" onClick={() => handleDeleteWaiterClick(waiter._id)}>Delete</Button>{' '}
               </td>
             </tr>
           ))}

@@ -6,6 +6,7 @@ import {
   updateAppointmentThunk,
   deleteAppointmentThunk,
 } from "../../services/appointments/appointments-thunks";
+import { Container, Row, Col, Form, Button, ListGroup } from "react-bootstrap";
 
 function BookingSystem() {
   const { appointments } = useSelector((state) => state.appointments);
@@ -47,8 +48,8 @@ function BookingSystem() {
   };
 
   return (
-    <div>
-      <h1>Restaurant Booking System</h1>
+    <Container>
+      <h1 className="text-center my-5">Restaurant Booking System</h1>
       <BookingForm
         onSubmit={editing ? updateAppointment : addAppointment}
         clearForm={clearForm}
@@ -62,7 +63,7 @@ function BookingSystem() {
           onEdit={editAppointment}
         />
       )}
-    </div>
+    </Container>
   );
 }
 
@@ -98,43 +99,61 @@ function BookingForm({ onSubmit, clearForm, appointment, editing }) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        placeholder="Name"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-      />
-      <input
-        type="number"
-        placeholder="Table"
-        value={table}
-        onChange={(e) => setTable(parseInt(e.target.value, 10))}
-      />
-      <input
-        type="time"
-        value={time}
-        onChange={(e) => setTime(e.target.value)}
-      />
-      <button type="submit">{editing ? "Update" : "Add"} Appointment</button>
-      {editing && <button onClick={clearForm}>Cancel</button>}
-    </form>
+    <Row className="mb-5">
+      <Col xs={12} md={{ span: 6, offset: 3 }}>
+        <Form onSubmit={handleSubmit}>
+        <Form.Group controlId="formTime">
+            <Form.Label>Time</Form.Label>
+            <Form.Control
+              type="time"
+              value={time}
+              onChange={(e) => setTime(e.target.value)}
+            />
+          </Form.Group>
+          <Button variant="primary" type="submit">
+            {editing ? "Update" : "Add"} Appointment
+          </Button>
+          {editing && (
+            <Button variant="secondary" onClick={clearForm} className="ml-2">
+              Cancel
+            </Button>
+          )}
+        </Form>
+      </Col>
+    </Row>
   );
 }
 
 function BookingList({ appointments, onDelete, onEdit }) {
   return (
-    <ul>
-      {appointments.map((appointment) => (
-        <li key={appointment._id}>
-          <div>{appointment.name}</div>
-          <div>Table: {appointment.table}</div>
-          <div>Time: {formatTime(appointment.time)}</div>
-          <button onClick={() => onDelete(appointment._id)}>Delete</button>
-          <button onClick={() => onEdit(appointment)}>Edit</button>
-        </li>
-      ))}
-    </ul>
+    <Row>
+      <Col xs={12} md={{ span: 6, offset: 3 }}>
+        <ListGroup>
+          {appointments.map((appointment) => (
+            <ListGroup.Item key={appointment._id}>
+              <div>{appointment.name}</div>
+              <div>Table: {appointment.table}</div>
+              <div>Time: {formatTime(appointment.time)}</div>
+              <Button
+                variant="warning"
+                onClick={() => onEdit(appointment)}
+                className="mt-2"
+              >
+                Edit
+              </Button>
+              <Button
+                variant="danger"
+                onClick={() => onDelete(appointment._id)}
+                className="mr-2 mt-2"
+              >
+                Delete
+              </Button>
+   
+            </ListGroup.Item>
+          ))}
+        </ListGroup>
+      </Col>
+    </Row>
   );
 }
 
@@ -148,3 +167,4 @@ function formatTime(dateTimeString) {
 }
 
 export default BookingSystem;
+

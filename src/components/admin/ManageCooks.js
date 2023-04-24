@@ -45,7 +45,7 @@ export default function ManageCooks() {
                 {cook.firstname} {cook.lastname}
               </td>
               <td>
-                <Button variant="primary" onClick={() => handleCookClick(cook._id)}>Check Info</Button>{' '}
+                <Button variant="warning" onClick={() => handleCookClick(cook._id)}>Check Info</Button>{' '}
                 <Button variant="danger" onClick={() => handleDeleteCookClick(cook._id)}>Delete</Button>{' '}
               </td>
             </tr>
