@@ -17,6 +17,7 @@ const initialState = {
   error: null,
   currentAccount: null,
   oneAccount: null,
+  isLogged: false,
 };
 
 const accountsSlice = createSlice({

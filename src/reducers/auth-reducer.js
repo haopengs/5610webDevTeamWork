@@ -7,7 +7,7 @@ import {
 
 const authSlice = createSlice({
   name: "auth",
-  initialState: { currentAccount: null },
+  initialState: { currentAccount: null , isLogged: false},
   reducers: {},
   extraReducers: {
     [registerThunk.fulfilled]: (state, { payload }) => {
@@ -15,9 +15,12 @@ const authSlice = createSlice({
     },
     [loginThunk.fulfilled]: (state, { payload }) => {
       state.currentAccount = payload;
+      state.isLogged = true;
     },
     [logoutThunk.fulfilled]: (state) => {
       state.currentAccount = null;
+      state.isLogged = false;
+
     },
   },
 });

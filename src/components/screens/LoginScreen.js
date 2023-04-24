@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { loginThunk } from "../../services/auth/auth-thunks";
+import { authenticate } from "../../services/auth/auth-service";
 
 export default function LoginScreen() {
   useSelector((state) => state.accounts.error);
@@ -13,6 +14,7 @@ export default function LoginScreen() {
   const handleLogin = async () => {
     const check = await dispatch(loginThunk({ username, password }));
     if (check.error == null) {
+      authenticate(check.payload)
       navigate("/profile");
     } else {
       alert("Please enter a correct username or password");

@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import { findDishesByKeyword } from "../../services/dishes/dishes-service";
 import { useParams, useNavigate } from "react-router";
 import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { loginThunk } from "../../services/auth/auth-thunks";
+import { isAuthenticated } from "../../services/auth/auth-service";
 
 export default function SearchPage() {
   const { currentAccount } = useSelector((state) => state.accounts);
@@ -10,11 +13,19 @@ export default function SearchPage() {
   const [searchResults, setSearchResults] = useState([]);
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (!currentAccount) {
-      alert("Please log in first!");
-      navigate("/login");
+      const data = isAuthenticated();
+      if (!data) {
+        alert("Please Login");
+        navigate("/login");
+      } else {
+        const username = data.username;
+        const password = data.password;
+        dispatch(loginThunk({ username, password }));
+      }
     } else {
       if (searchItem) {
         handleSearch();
