@@ -6,7 +6,6 @@ import { findAllAccountsByDishIdThunk } from "../../services/accounts/accounts-t
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
-import { Link } from "react-router-dom";
 
 export default function DishDetail() {
   const { dishId } = useParams();

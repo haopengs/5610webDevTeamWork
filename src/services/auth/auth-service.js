@@ -22,6 +22,7 @@ export const login = async ({ username, password }) => {
 };
 
 export const logout = async () => {
+  localStorage.removeItem('jwt');
   const response = await api.post(`${ACCOUNTS_API_URL}/logout`);
   return response.data;
 };

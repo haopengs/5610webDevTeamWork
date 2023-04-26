@@ -53,6 +53,7 @@ function RestaurantApp() {
         />
         <Route path="/dishes" element={<EditDishesScreen />} />
         <Route path="/details/dish/:dishId" element={<DishDetail />} />
+        <Route path="user/order-dishes/details/dish/:dishId" element={<DishDetail />} />
         <Route path="/appointment" element={<BookingSystem />} />
         <Route path="/manage-cooks" element={<ManageCooks />} />
         <Route path="/manage-waiters" element={<ManageWaiters />} />
