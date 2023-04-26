@@ -110,7 +110,7 @@ function BookingForm({ onSubmit, clearForm, appointment, editing }) {
               onChange={(e) => setTime(e.target.value)}
             />
           </Form.Group>
-          <Button variant="primary" type="submit">
+          <Button className="mt-2" variant="warning" type="submit">
             {editing ? "Update" : "Add"} Appointment
           </Button>
           {editing && (
@@ -144,7 +144,7 @@ function BookingList({ appointments, onDelete, onEdit }) {
               <Button
                 variant="danger"
                 onClick={() => onDelete(appointment._id)}
-                className="mr-2 mt-2"
+                className="mr-2 mt-2 ms-2"
               >
                 Delete
               </Button>

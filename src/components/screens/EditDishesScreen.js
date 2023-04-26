@@ -166,7 +166,7 @@ function EditDishesScreen() {
         {isEditing ? (
           <Button variant="success" onClick={handleSaveClick}>Save</Button>
         ) : (
-          <Button variant="primary" onClick={() => handleEditClick(index)}>Edit</Button>
+          <Button variant="warning" onClick={() => handleEditClick(index)}>Edit</Button>
         )}
       </ListGroup.Item>
     );
@@ -189,7 +189,7 @@ function EditDishesScreen() {
               />
             </Form.Group>
             <Form.Group controlId="formDishChef">
-              <Form.Label>Chef:</Form.Label>
+              <Form.Label> Chef:</Form.Label>
               <Form.Control
                 type="text"
                 value={newDishChef}
@@ -220,7 +220,7 @@ function EditDishesScreen() {
                 onChange={(event) => setNewDishPrice(event.target.value)}
               />
             </Form.Group>
-            <Button variant="primary" onClick={handleAddNewDish}>Add New Dish</Button>
+            <Button variant="warning" className="mt-2" onClick={handleAddNewDish}>Add New Dish</Button>
           </Form>
         </Col>
       </Row>
