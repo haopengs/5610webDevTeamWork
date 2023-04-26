@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   findAllDishesThunk,
   createDishThunk,
+  updateDishThunk,
 } from "../../services/dishes/dishes-thunks";
 
 const FoodSearch = () => {
@@ -13,12 +15,26 @@ const FoodSearch = () => {
   const [meals, setMeals] = useState([]);
   const [mealDetails, setMealDetails] = useState(null);
 
+  useEffect(() => {
+    const storedSearchResults = localStorage.getItem("searchResults");
+    if (storedSearchResults) {
+      setMeals(JSON.parse(storedSearchResults));
+    }
+  }, []);
+
   const searchFood = async () => {
+    setMealDetails(null);
     const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchText}`;
     const response = await fetch(url);
     const data = await response.json();
     setMeals(data.meals);
     setSearchText("");
+
+    localStorage.setItem("searchResults", JSON.stringify(data.meals)); // Save search results to local storage
+  };
+
+  const saveSearchResultsToLocalStorage = (meals) => {
+    localStorage.setItem("searchResults", JSON.stringify(meals));
   };
 
   const loadDetails = async (mealID) => {
@@ -79,7 +95,6 @@ const FoodSearch = () => {
       </div>
       <div className="d-flex justify-content-center mb-4">
         <input
-          id="input_field"
           type="text"
           value={searchText}
           onChange={(e) => setSearchText(e.target.value)}
@@ -90,6 +105,7 @@ const FoodSearch = () => {
           Search
         </button>
       </div>
+
       {/* single meal details */}
       <div id="meal_details">
         {mealDetails && (
@@ -132,38 +148,29 @@ const FoodSearch = () => {
                 />
                 <div className="card-body d-flex flex-column">
                   <h5 className="card-title text-center">{meal.strMeal}</h5>
-                  {currentAccount &&
-                  (currentAccount.role === "admin" ||
-                    currentAccount.role === "cook") ? (
-                    <>
-                      <button
-                        className="btn btn-warning mt-auto mb-2 w-100"
-                        type="button"
-                        onClick={() => loadDetails(meal.idMeal)}
-                      >
-                        See Details
-                      </button>
-                      <button
-                        className="btn btn-warning mt-auto w-100"
-                        type="button"
-                        onClick={() => handleAddToRecipe(meal)}
-                      >
-                        Add to Recipe
-                      </button>
-                    </>
-                  ) : (
-                    <div className="alert alert-info">
-                      Login as Cook to Add Recipes
-                    </div>
-                  )}
+                  <button
+                    className="btn btn-warning mt-auto mb-2 w-100"
+                    type="button"
+                    onClick={() => loadDetails(meal.idMeal)}
+                  >
+                    See Details
+                  </button>
+                  <button
+                    className="btn btn-warning mt-auto w-100"
+                    type="button"
+                    onClick={() => handleAddToRecipe(meal)}
+                  >
+                    Add to Recipe
+                  </button>
                 </div>
               </div>
             </div>
           ))}
         </div>
       </div>
-      {currentAccount &&
-      (currentAccount.role === "admin" || currentAccount.role === "cook") ? (
+
+      {/* add recipe */}
+      {currentAccount.role === "cook" && (
         <div className="row mt-5">
           <div className="col-lg-6 offset-lg-3">
             <div className="card text-white bg-dark">
@@ -240,7 +247,10 @@ const FoodSearch = () => {
             </div>
           </div>
         </div>
-      ) : (
+      )}
+
+      {/* if not cook */}
+      {currentAccount.role !== "cook" && (
         <div className="alert alert-info mt-5">
           Login as Cook to Add New Recipes
         </div>
